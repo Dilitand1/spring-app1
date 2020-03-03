@@ -1,5 +1,9 @@
 package ru.litvinov.springcource;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Queue;
+
 public class MainT {
     public static void main(String[] args) throws InterruptedException {
         final MyClass myClass = new MyClass();
@@ -16,6 +20,8 @@ public class MainT {
                 myClass.addA2();
             }
         }).start();
+
+        new B().test();
     }
 }
 
@@ -42,4 +48,13 @@ class MyClass{
 }
 class B {
     int x = 0;
+    Deque queue = new ArrayDeque();
+    void test(){
+        queue.add(1);
+        queue.add(2);
+        queue.offer(3);
+        queue.offerFirst(4);
+        queue.offerLast(5);
+        System.out.println(queue);
+    }
 }
