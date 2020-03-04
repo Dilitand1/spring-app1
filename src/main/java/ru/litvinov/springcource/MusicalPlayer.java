@@ -15,6 +15,10 @@ public class MusicalPlayer {
     public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
     }
+    public void setMusicList(Music music) {
+        this.music = music;
+    }
+
 
     public String getPlayerName() {
         return playerName;
@@ -33,7 +37,8 @@ public class MusicalPlayer {
     }
 
     //IoC
-    public MusicalPlayer(){
+    public MusicalPlayer(Music music){
+        this.music = music;
     }
 
     public void setMusic(Music music) {
