@@ -1,51 +1,22 @@
 package ru.litvinov.springcource;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MusicalPlayer {
-    private Music music;
-    private List<Music> musicList;
-    private String playerName;
-    private int volume;
 
-    public List<Music> getMusicList() {
-        return musicList;
-    }
+    private RockMusic rockMusic;
+    private ClassicalMusic classicalMusic;
 
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-    public void setMusicList(Music music) {
-        this.music = music;
+    @Autowired
+    public MusicalPlayer(RockMusic rockMusic, ClassicalMusic classicalMusic) {
+        this.rockMusic = rockMusic;
+        this.classicalMusic = classicalMusic;
     }
 
 
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    //IoC
-    public MusicalPlayer(Music music){
-        this.music = music;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
-    }
-
-    public void playMusic() {
-        System.out.println("Playing " + music.getSong());
+    public String playMusic() {
+        return classicalMusic.getSong();
     }
 }
